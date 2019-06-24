@@ -34,28 +34,34 @@ $(function(){
 
 function search() {
     // Clear Results
-$('#results').html('');
-$('#buttons').html('');
+    $('#results').html('');
+    $('#buttons').html('');
 
-// Get Form Input
-q = $('#query').val();
+    // Get Form Input
+    q = $('#query').val();
 
-// Run GET Request on API
+    // Run GET Request on API
 
-$.get(
-  "https://www.googleapis.com/youtube/v3/search", {
-      part:'snippet, id',
-      q: q,
-      type: 'video',
-      key: 'AIzaSyCyLzWCMhLkN6g353fB6Vr6FE4TWhsgZpM'},
-      function(data){
-          var nextPageToken = data.nextPageToken;
-          var prevPageToken = data.prevPageToken;
+    $.get(
+    "https://www.googleapis.com/youtube/v3/search", {
+        part:'snippet, id',
+        q: q,
+        type: 'video',
+        key: 'AIzaSyCyLzWCMhLkN6g353fB6Vr6FE4TWhsgZpM'},
+        function(data){
+            var nextPageToken = data.nextPageToken;
+            var prevPageToken = data.prevPageToken;
 
-          // Log Data
-          console.log(data);
-      }
-); 
+            // Log Data
+            console.log(data);
+
+            $.each(data.items, function(i, item){
+                // Get Output
+                var output = getOutput(item);
+
+                // Display Results
+                $('#results').append(output);
+            });
+        }
+    );
 }
-
-
