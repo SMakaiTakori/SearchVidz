@@ -156,9 +156,6 @@ function prevPage(){
     );
 }
 
-
-
-
 //Build Output
 function getOutput(item){
     var videoId = item.id.videoId;
