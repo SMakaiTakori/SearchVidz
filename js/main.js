@@ -162,13 +162,16 @@ function getOutput(item){
     var title = item.snippet.title;
     var description = item.snippet.description;
     var thumb = item.snippet.thumbnails.high.url;
+    var channelTitle = item.snippet.channelTitle;
     var videoDate= item.snippet.publishedAt;
 
     // Build Output String
     var output = `
     <li>
-    <div class= "list-left"> <img src="${thumb}"></div> <div class= "list-right"><h3>${title}</h3>
-    <small>By <span class= "cTitle">${title}</span> on ${videoDate}</small> <p>${description}</p>
+    <div class= "list-left"> <img src=${thumb}></div> 
+    <div class= "list-right">
+    <h3><a data-fancybox data-type="iframe" data-width="1000" data-height="500" data-src="http://www.youtube.com/embed/${videoId}"> ${title}</a></h3>
+    <small>By <span class= "cTitle">${channelTitle}</span> on ${videoDate}</small> <p>${description}</p>
     </li>
     <div class= "clearfix"></div>`;
 
