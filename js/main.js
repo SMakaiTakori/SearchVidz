@@ -62,6 +62,12 @@ function search() {
                 // Display Results
                 $('#results').append(output);
             });
+
+            var buttons = getButtons(prevPageToken, nextPageToken);
+
+            //Display Buttons
+            $('#buttons').append(buttons);
+
         }
     );
 }
@@ -76,16 +82,36 @@ function getOutput(item){
 
     // Build Output String
     var output = '<li>' +
-    '<div class = "list-left">' +
+    '<div class= "list-left">' +
     '<img src="'+thumb+'">' +
     '</div>' +
-    '<div class = "list-right">' +
+    '<div class= "list-right">' +
     '<h3>'+title+'</h3>' +
-    '<small>By <span class= "cTitle">'+title+ '</span> on '+videoDate+'</small>'
+    '<small>By <span class= "cTitle">'+title+ '</span> on '+videoDate+'</small>' +
     '<p>'+description+'</p>' +
     '</li>' +
-    '<div class = "clearfix"></div>' +
+    '<div class= "clearfix"></div>' +
     '';
 
     return output;
+}
+
+//Build the buttons
+function getButtons(prevPageToken, nextPageToken){
+
+    if(!prevPageToken){
+        var btnoutput = '<div class = "button-container">' +
+        '<button id= "next-button" class="paging-button" data-token="'+nextPageToken+'" data-query="'+q+'"' +
+        'onclick="nextPage();">Next Page</button></div>';    
+    } else {
+        var btnoutput = '<div class = "button-container">' +
+        '<button id= "next-button" class="paging-button" data-token="'+prevPageToken+'" data-query="'+q+'"' +
+        'onclick="prevPage();">Previous Page</button></div>';   
+        '<button id= "next-button" class="paging-button" data-token="'+nextPageToken+'" data-query="'+q+'"' +
+        'onclick="nextPage();">Next Page</button></div>'; 
+    }
+
+        return(btnoutput);
+
+
 }
