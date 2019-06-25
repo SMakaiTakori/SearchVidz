@@ -71,7 +71,6 @@ footer{
     padding: 11px 7px;
     padding-right: 43px;
     background: #fff;
-    color: #ccc;
     border: 1px solid #c8c8c8;
     font-size: 1.6em;
     border-bottom-color: #d2e2e7;
@@ -127,4 +126,18 @@ footer{
 
 .cTitle{
     color:#dd2826;
+}
+
+.button-container {
+    margin-top: 25px;
+}
+
+.paging-button{
+    background: #f4f4f4;
+    padding: 8px 13px;
+    border: #ccc 1 px solid;
+    border-radius: 5px;
+    color:#333;
+    margin: 10px;
+    cursor: pointer;
 }
